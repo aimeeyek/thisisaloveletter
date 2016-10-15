@@ -1,0 +1,57 @@
+var opacity=10; 
+var circle={ 
+  x:100, 
+  y:200,
+  diameter:40, 
+  xspeed: 3,
+  yspeed: 5
+}; 
+
+function setup() {
+  createCanvas(1500,500); 
+  background("white");
+  fill("black"); 
+  textSize(13); 
+  text("please wait with patience while the love letter is being printed",15,42); 
+  text("but you may press the mouse any moment if you lose your patience",15,55); 
+}
+
+function draw() { 
+  textSize(100); 
+  fill("White");
+  noStroke(); 
+  text("this is a lover letter", 300,300); 
+  fill(255,20,147,opacity); 
+  if (circle.y > height/2 || circle.x < width/2) { 
+    opacity = opacity-circle.yspeed;
+  }else{
+    opacity=opacity-circle.yspeed*0.7; 
+  }
+ 
+  circle.x=circle.x+circle.xspeed; 
+  circle.y=circle.y+circle.yspeed; 
+  
+ if (circle.x>width ||circle.x<0) { 
+   circle.xspeed = circle.xspeed*-1; 
+   console.log(circle.x);
+  
+ }
+  if (circle.y>height || circle.y<0) { 
+    circle.yspeed = circle.yspeed*-1; 
+  }
+  stroke(128,128,128,20); 
+  strokeWeight(1);
+  ellipse(circle.x,circle.y,circle.diameter,circle.diameter); 
+  circle.diameter=circle.diameter+(circle.diameter*circle.xspeed)/1000; 
+}
+function mousePressed () {
+  background("white"); 
+  fill(random(0),0,random(0),60); 
+  textSize(50);
+  noStroke(); 
+  text("if you don't believe this is a love letter,", 230,380); 
+  fill(random(0),random(0),random(0),30); 
+  textSize(30); 
+  text("probably it means you don't believe in the idea of love", 330,400); 
+  
+}
